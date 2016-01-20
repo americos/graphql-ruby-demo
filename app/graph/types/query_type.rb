@@ -24,4 +24,12 @@ QueryType = GraphQL::ObjectType.define do
   field :node, field: NodeIdentification.field
 
   field :reminder, ReminderType, field: FetchField.new(type: ReminderType, model: Reminder)
+  field :all_reminders do
+    type GraphQL::ListType.new(of_type: ReminderType)
+    description "Get all reminders"
+
+    resolve -> (obj, args, ctx) do
+      Reminder.all
+    end
+  end
 end
