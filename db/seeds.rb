@@ -92,6 +92,7 @@ Reminder.delete_all
 
 reminder_list = [
     { name: 'Pay your photographer', due_date: '03/01/2016', tool: 'Checklist'},
+    { name: 'Call your bridesmaids', due_date: '03/01/2016', tool: 'Checklist'},
     { name: 'Call your Wedding Planner', due_date: '03/02/2016', tool: 'Checklist'},
     { name: 'Verify that Dad\'s Check went through', due_date: '03/03/2016', tool: 'Budget'},
     { name: 'Pay your Florist', due_date: '03/04/2016', tool: 'Checklist'},

@@ -32,4 +32,13 @@ QueryType = GraphQL::ObjectType.define do
       Reminder.all
     end
   end
+  field :reminder_by_due_date do
+    type GraphQL::ListType.new(of_type: ReminderType)
+    description "Get a reminder by due date"
+    argument :due_date, !types.String, "Returns the list of reminders by due date"
+
+    resolve -> (obj, args, ctx) do
+      Reminder.where(due_date: args[:due_date])
+    end
+  end
 end
