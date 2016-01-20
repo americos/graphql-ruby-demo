@@ -1,0 +1,33 @@
+# Get a specific reminder
+# query aa{
+#   specific_reminder: reminder(id: 2){
+# 		... reminder_info
+#   }
+# }
+
+#Get All Reminders
+# query bb{
+# 	all_reminders: all_reminders{
+# 		... reminder_info
+#   }
+# }
+
+#Get Reminder by Due Date
+# query cc{
+#   reminder_by_due_date(due_date: "2016-06-03"){
+#     ... reminder_info
+#   }
+# }
+
+# Get Latest X reminders (default: 3)
+query dd{
+  latest_reminders(count: 4){
+    ... reminder_info
+  }
+}
+
+
+fragment reminder_info on Reminder{
+  name, tool, due_date
+}
+

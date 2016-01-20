@@ -41,4 +41,13 @@ QueryType = GraphQL::ObjectType.define do
       Reminder.where(due_date: args[:due_date])
     end
   end
+  field :latest_reminders do
+    type GraphQL::ListType.new(of_type: ReminderType)
+    description "Get the latest X reminders (defaults to 3)"
+    argument :count, types.Int, "Number of latest reminders to return"
+
+    resolve -> (obj, args, ctx) do
+      Reminder.order(:due_date).first(args[:count] || 3)
+    end
+  end
 end
