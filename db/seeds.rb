@@ -85,3 +85,20 @@ HUMANS.each do |human|
   friend_ids.map { |to_id| create_friendship(human[:id], to_id) }
   Human.create!(human)
 end
+
+###########################
+
+Reminder.delete_all
+
+reminder_list = [
+    { name: 'Pay your photographer', due_date: '03/01/2016', tool: 'Checklist'},
+    { name: 'Call your Wedding Planner', due_date: '03/02/2016', tool: 'Checklist'},
+    { name: 'Verify that Dad\'s Check went through', due_date: '03/03/2016', tool: 'Budget'},
+    { name: 'Pay your Florist', due_date: '03/04/2016', tool: 'Checklist'},
+    { name: 'Ask your Fiance to reserve his tux!', due_date: '03/05/2016', tool: 'Checklist'},
+    { name: 'Best pictures ideas for your wedding', due_date: '03/06/2016', tool: 'Forums'},
+]
+
+reminder_list.each do|reminder|
+  Reminder.create! reminder
+end

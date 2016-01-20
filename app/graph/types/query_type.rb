@@ -22,4 +22,6 @@ QueryType = GraphQL::ObjectType.define do
   field :human, HumanType, field: FetchField.new(type: HumanType, model: Human)
   field :droid, DroidType, field: FetchField.new(type: DroidType, model: Droid)
   field :node, field: NodeIdentification.field
+
+  field :reminder, ReminderType, field: FetchField.new(type: ReminderType, model: Reminder)
 end
