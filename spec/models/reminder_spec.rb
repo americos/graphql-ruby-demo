@@ -17,6 +17,23 @@ describe 'ReminderType' do
     |
   }
 
+  describe "Getting an specific reminder" do
+    let(:query){
+      %|
+      { specific_reminder: reminder(id: 1){
+          ... reminder_info
+        }
+      }
+      #{reminder_info_fragment}
+      |
+    }
+
+    it 'returns just a given reminder' do
+      create(:reminder, tool: 'sss')
+      expect(result['data'].count).to eq 1
+    end
+  end
+
   describe "Getting all reminders" do
     let(:total_reminders){ 5 }
     let(:query){
