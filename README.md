@@ -2,15 +2,16 @@
 
 This repository contains a GraphQL Implementation to demo the capabilities of GraphQL using the [graphql-ruby](https://github.com/rmosolgo/graphql-ruby) gem for WeddingWire
 
-- Try it on [heroku](https://infinite-cove-44885.herokuapp.com/).
-- GraphiQL IDE is served by [graphiql-rails](https://github.com/rmosolgo/graphiql-rails)
+- Demo is in: [https://infinite-cove-44885.herokuapp.com/](https://infinite-cove-44885.herokuapp.com/)
+- Endpoint for Mobile Devs: [https://infinite-cove-44885.herokuapp.com/queries](https://github.com/rmosolgo/graphiql-rails/queries)
+	- Mobile Devs would just need to submit a POST to this endpont passing the variable: "query" and the GraphQL query string of their choosing as its value
 
 
 Steps to query data
 ===
 * Through GraphiQL (good option to test your GraphQL query)
- 1. Go to :
- 2. Type a sample query like:
+ 1. Click the demo link above
+ 2. On the left side, type a sample query like:
 
 		`
 		query MyQuery{
@@ -29,13 +30,7 @@ Steps to query data
  2. Type a sample query like:
 
 		` 
-		query MyQuery{
-			all_reminders: all_reminders{
-				name
-				tool
-				due_date
-			}
-		}
+		curl -d "query=query dd{ latest_reminders(count: 4){ ... reminder_info } } fragment reminder_info on Reminder{ name, tool, due_date}" https://infinite-cove-44885.herokuapp.com/queries
 		`
  3. You will then see the JSON response
 
@@ -44,7 +39,7 @@ Sample GraphQL Queries
 * GET A SPECIFIC REMINDER
 
 	`
-	query aa{
+	query MyQuery{
    		specific_reminder: reminder(id: 10){
 			name tool due_date
    		}
@@ -174,7 +169,7 @@ Sample GraphQL Queries
 * GET LATEST N REMINDERS USING GRAPHQL FRAGMENTS (DEFAULTS TO 3) 
 
 	`
-	query dd{
+	query MyQuery{
 	  latest_reminders(count: 2){
 		 ... reminder_info
   		}
