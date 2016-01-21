@@ -35,7 +35,7 @@ QueryType = GraphQL::ObjectType.define do
   field :reminder_by_due_date do
     type GraphQL::ListType.new(of_type: ReminderType)
     description "Get a reminder by due date"
-    argument :due_date, !types.String, "Returns the list of reminders by due date"
+    argument :due_date, !types.String, "Returns the list of reminders on a given due date"
 
     resolve -> (obj, args, ctx) do
       Reminder.where(due_date: args[:due_date])
@@ -43,7 +43,7 @@ QueryType = GraphQL::ObjectType.define do
   end
   field :latest_reminders do
     type GraphQL::ListType.new(of_type: ReminderType)
-    description "Get the latest X reminders (defaults to 3)"
+    description "Get the latest X reminders order by due date (defaults to 3)"
     argument :count, types.Int, "Number of latest reminders to return", default_value: 3
 
     resolve -> (obj, args, ctx) do
