@@ -31,3 +31,10 @@ fragment reminder_info on Reminder{
   name, tool, due_date
 }
 
+
+# Add Reminder
+mutation SomeMutation{
+  createReminder(name: "Call Stylist", due_date: "2016-01-23", tool: "Checklist"){
+    name
+  }
+}
