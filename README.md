@@ -166,6 +166,8 @@ Sample GraphQL Queries
 		  }
 		}
 
+* Add a Reminder (GraphQL Mutation)
+* 
 * GET LATEST N REMINDERS USING GRAPHQL FRAGMENTS (DEFAULTS TO 3) 
 
 	`
