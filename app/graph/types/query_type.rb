@@ -29,7 +29,12 @@ QueryType = GraphQL::ObjectType.define do
     description "Get all reminders"
 
     resolve -> (obj, args, ctx) do
-      Reminder.all
+      #Sample of how we can potentially check the ctx object for cancan abilities
+      if ctx[:current_user] == 'americo'
+        Reminder.all
+      else
+        []
+      end
     end
   end
   field :reminder_by_due_date do
